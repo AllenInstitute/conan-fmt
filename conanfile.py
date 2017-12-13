@@ -16,6 +16,8 @@ class FmtConan(ConanFile):
     default_options = "shared=False", "header_only=False"
     exports_sources = 'CMakeLists.txt'
     generators = 'cmake'
+    
+    build_requires = 'GCC/7.2.0@aibs/stable', 'CMake/3.9.1@aibs/stable', 'Ninja/1.7.2@aibs/stable'
 
     def config_options(self):
         if self.options.header_only:
