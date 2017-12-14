@@ -31,11 +31,11 @@ class FmtConan(ConanFile):
 
     def build(self):
         if not self.options.header_only:
-            cmake = CMake(self)
+            cmake = CMake(self, generator="Ninja")
             cmake.definitions["FMT_TEST"] = False
             cmake.definitions["FMT_INSTALL"] = True
             cmake.definitions["BUILD_SHARED_LIBS"] = self.options.shared
-            cmake.configure()
+            cmake.configure(build_dir='build')
             cmake.build()
             cmake.install()
 
